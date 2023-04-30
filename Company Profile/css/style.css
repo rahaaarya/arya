@@ -28,7 +28,7 @@ img-hero{
     font-size: 16px;
     color: #FCDC00;
 }
-.nav-link.active{
+.active{
     font-weight: 700;
     text-decoration:underline;
 }
@@ -52,7 +52,7 @@ img-hero{
 }
 .hero-tagline h5{
     color: #fff;
-    margin-left: 500px;
+    /* margin-left: 500px; */
     margin-top: 50px;
 }
 .img-hero{
@@ -62,15 +62,15 @@ img-hero{
     color: #fff;
     font-weight: 700;
     font-size: 50px;
-    margin-left: 500px;
+    /* margin-left: 430px; */
     margin-top: 50px;
 }
 .hero-tagline p{
-    font-size: 24px;
+    /* font-size: 24px; */
     color: #fff;
-    margin-left: 79%;
-    width: 85%; 
-    line-height: 30px;
+    /* margin-left: 79%; */
+    /* width: 100%; 
+    line-height: 30px; */
 }
 .button-lg-primary{
     width: 237px;
@@ -80,7 +80,7 @@ img-hero{
     border: none;
     font-size: 20px;
     font-weight: 700;
-    margin-left: 500px;
+    /* margin-left: 430px; */
 }
 /* Layanan */
 #layanan{
@@ -166,9 +166,11 @@ h2{
     display: flex;
     float: left;
     align-items: center;
-    margin-top: 5%;
-    max-width: 50%;
-    margin-right: 20px;
+    /* margin-top: 25%; */
+    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
+    /* margin-right: 20px; */
 }
 .content{
    overflow: hidden;
@@ -199,7 +201,7 @@ h2{
     transition: all .2s ease-in;
 }
 .card-img img{
-    width: 415px;
+    width: 100%;
     height: 200px;
 }
 .card-body:hover{

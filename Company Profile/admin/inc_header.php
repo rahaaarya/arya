@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("../inc/koneksi.php");
 ?>
 
@@ -10,68 +10,50 @@ include("../inc/koneksi.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Company Profile</title>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-    <style>
-    .image-list-content .col-lg-3 {
-        width: 100%;
-    }
-
-    .image-list-content img {
-        float: left;
-        width: 20%
-    }
-
-    .image-list-content p {
-        float: left;
-        padding-left: 20px
-    }
-
-    .image-list-item {
-        padding: 10px 0px 10px 0px
-    }
-    </style>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/admin-style.css">
 </head>
 
-<body class="container">
+<body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Admin Halaman</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Admin Tutors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Admin Partner</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Admin Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Logout>></a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="sidebar bg-dark">
+            <div class=" border-bottom border-white">
+                <h2 class="text-white text-center my-3" href="#">ADMINS</h2>
             </div>
-        </nav>
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item border-bottom border-light mt-3">
+                        <a class="nav-link text-white" href="#">INDEX</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="border-top border-white mt-4">
+                <h5 class="text-white text-center mt-3">EDIT FORM</h5>
+            </div>
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item border-bottom border-white">
+                        <a class="nav-link text-white" href="home.php">Home</a>
+                    </li>
+                    <li class="nav-item border-bottom border-white">
+                        <a class="nav-link text-white" href="about.php">About Us</a>
+                    </li>
+                    <li class="nav-item border-bottom border-white">
+                        <a class="nav-link text-white dropdown-toggle" role="button" data-bs-toggle="collapse" data-bs-target="#demo">Product & Service </a>
+                    </li>
+                    <div id="demo" class="collapse">
+                        <div class="container-fluid">
+                            <li><a class="nav-link text-white border-bottom border-white" href="goverment.php">E-Goverment</a></li>
+                            <li><a class="nav-link text-white border-bottom border-white" href="business.php">E-Business</a></li>
+                        </div>
+                    </div>
+                    <li class="nav-item w-100 border-top border-end border-white position-absolute bottom-0 end-0">
+                        <a class="nav-link text-white text-center" href="#">LOG OUT</a>
+                    </li>
+                </ul>
+            </div>
     </header>
-    <main>
