@@ -2,7 +2,7 @@
 include '../inc/koneksi.php';
 
 $no = 1;
-$data = mysqli_query($koneksi, "SELECT * from hal_hero WHERE category = 'about'");
+$data = mysqli_query($koneksi, "SELECT * from h_hero WHERE category = 'about'");
 ?>
 
 <main class="content mb-5">
