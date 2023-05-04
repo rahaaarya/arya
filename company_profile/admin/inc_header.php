@@ -51,6 +51,9 @@ include("../inc/koneksi.php");
                             <li><a class="nav-link text-white border-bottom border-white" href="business.php">E-Business</a></li>
                         </div>
                     </div>
+                    <li class="nav-item border-bottom border-white">
+                        <a class="nav-link text-white" href="about.php">Contact</a>
+                    </li>
                     <li class="nav-item w-100 border-top border-end border-white position-absolute bottom-0 end-0">
                         <a class="nav-link text-white text-center" href="#">LOG OUT</a>
                     </li>
