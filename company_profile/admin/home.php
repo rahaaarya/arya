@@ -1,7 +1,5 @@
 <?php include("inc_header.php");
 include '../inc/koneksi.php';
-session_start();
-
 
 $no = 1;
 $data = mysqli_query($koneksi, "SELECT * from h_hero WHERE category = 'home'");
@@ -34,17 +32,19 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
 
             while ($d = mysqli_fetch_array($data)) {
         ?>
-                <?php
-                if (isset($_GET['m'])) { ?>
-                    <div class="alert alert-primary" role="alert">
-                        Data Berhasil di update
-                    </div>
-                <?php } ?>
                 <div class="container-fluid p-3 tab-pane fade show active">
-                    <h2 class="mb-5">HERO SECTION</h2>
+                    <h2>HERO SECTION</h2>
+                    <hr class="mb-5">
                     <form class="container" method="post" action="proses/h_hero.php">
                         <input hidden type="text" class="form-control" name="id" value="<?= $d['id']; ?>">
                         <input hidden type="text" class="form-control" name="kategori" value="<?= $d['category']; ?>">
+                        <input hidden type="text" class="form-control" name="page" value="<?php
+                                                                                            if (isset($_GET['p'])) {
+                                                                                                echo '?p=' . $_GET['p'];
+                                                                                            } else {
+                                                                                                echo '';
+                                                                                            }
+                                                                                            ?>">
                         <div class="container mb-3">
                             <label for="ijudul" class="form-label">Title</label>
                             <input type="text" class="form-control" id="ijudul" name="judul" value="<?= $d['title']; ?>">
@@ -61,7 +61,8 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
             <?php }
         } elseif ($p == 'section2') { ?>
             <div class="container-fluid p-3 tab-pane fade show active">
-                <h2 class="mb-5">SERVICE SECTION</h2>
+                <h2>SERVICE SECTION</h2>
+                <hr class="mb-5">
                 <button type="button" class="btn btn-success mb-3 inputService" data-bs-toggle="modal" data-bs-target="#exampleModalDefault">
                     + Add Service
                 </button>
@@ -69,7 +70,7 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>IMG</th>
+                            <th>ICON</th>
                             <th>TITLE</th>
                             <th>DESCRIPTION</th>
                             <th>ACTION</th>
@@ -79,11 +80,11 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
                         <?php while ($d2 = mysqli_fetch_array($data2)) { ?>
                             <tr>
                                 <th><?= $no++ ?></th>
-                                <td><img src="../assets/uploaded/<?= $d2['img']; ?>" width="50" alt="<?= $d2['img']; ?>"></td>
+                                <td class="text-center"><i class="fas fa-2x fa-<?= $d2['icon']; ?>"></i></td>
                                 <td><?= $d2['title']; ?></td>
                                 <td><?= substr(strip_tags($d2['description']), 0, 70) . '...'; ?></td>
                                 <td>
-                                    <a href="proses/h_service.php?id=<?= $d2['id']; ?>" type="button" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                    <a id="hapusIni" href="proses/h_service.php?id=<?= $d2['id']; ?>&h=<?= $d2['category'] ?>&p=<?= $_GET['p'] ?>" type="button" class="btn btn-sm btn-danger">
                                         Delete
                                     </a>
                                     |
@@ -103,12 +104,14 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
         <?php
         } elseif ($p == 'section3') { ?>
             <div class="container-fluid p-3 tab-pane fade show active">
-                <h2 class="mb-5">FAQ SECTION</h2>
+                <h2>FAQ SECTION</h2>
+                <hr class="mb-5">
                 <div class="container">
                     <?php $d3 = mysqli_fetch_array($data3); ?>
                     <form class="container" method="post" action="proses/h_section.php" enctype="multipart/form-data">
                         <input hidden type="text" class="form-control" name="id" value="<?= $d3['id']; ?>">
                         <input hidden type="text" class="form-control" name="category" value="<?= $d3['category']; ?>">
+                        <input hidden type="text" class="form-control" name="page" value="<?= $_GET['p'] ?>">
                         <input type="text" id="currImg" name="currImg" value="<?= $d3['img']; ?>" hidden>
                         <div class="container mb-3">
                             <label for="iimage" class="form-label">Image</label>
@@ -132,11 +135,12 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
             <!-- ================================ SECTION 4 ================================================ -->
         <?php } elseif ($p == 'section4') { ?>
             <div class="container-fluid p-3 tab-pane fade show active">
-                <h2 class="mb-5">NEWS SECTION</h2>
+                <h2>NEWS SECTION</h2>
+                <hr class="mb-5">
                 <button type="button" class="btn btn-success mb-3 inputNews" data-bs-toggle="modal" data-bs-target="#exampleModalDefault">
                     + Add News
                 </button>
-                <table class="table table-striped table-secondary table-bordered">
+                <table class="table table-striped table-light table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -154,7 +158,7 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
                                 <td><?= substr(strip_tags($d4['title']), 0, 30) . '...'; ?></td>
                                 <td><?= substr(strip_tags($d4['description']), 0, 30) . '...'; ?></td>
                                 <td>
-                                    <a href="proses/h_news.php?id=<?= $d4['id']; ?>" type="button" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                    <a id="hapusIni" href="proses/h_news.php?id=<?= $d4['id']; ?>" type="button" class="btn btn-sm btn-danger">
                                         Delete
                                     </a>
                                     |
@@ -184,9 +188,26 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
                 <div class="modal-body">
                     <form class="container" method="post" action="proses/h_service.php" enctype="multipart/form-data">
                         <div class="mb-3 forImg">
-                            <label for="image" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                            <p id="forImg" hidden class="mt-3">Gambar sebelumnya: <img src="../assets/uploaded/" width="50px" alt=""></p>
+                            <label id="mLabel1" for="image" class="form-label">Image</label>
+
+                            <!-- for image -->
+                            <div id="forImg">
+                                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                <p id="currImg" class="mt-3">Gambar sebelumnya: <img src="../assets/uploaded/" width="50px" alt=""></p>
+                            </div>
+
+                            <!--  for icon -->
+                            <div id="forIcon">
+                                <input type="text" class="form-control" id="icon" name="icon" placeholder="contoh: user-group">
+                                <a id="linkIcon" href="howtoicon.php" target="_blank">cara mengambil icon!</a>
+                                <a href="https://fontawesome.com/icons" target="_blank" class="text-warning float-end">cari font disini!</a>
+                                <div id="currIcon">
+                                    <p class="d-flex flex-column mt-3"> Icon sebelumnya: <i class=""></i>
+                                        <span id="iconName" class="align-self-center"></span>
+                                </div>
+                                </p>
+                            </div>
+
                         </div>
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
@@ -196,9 +217,10 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" rows="3" name="description"></textarea>
                             <input type="text" id="id_serv" name="id" hidden>
-                            <input type="text" id="cat_serv" name="category" hidden>
+                            <input type="text" id="cat_serv" name="category" value="home" hidden>
                             <input type="text" id="currImg" name="currImg" value="" hidden>
                             <input type="text" id="sub_title" name="sub_title" value="" hidden>
+                            <input hidden type="text" class="form-control" name="page" value="<?= $_GET['p'] ?>">
                         </div>
                         <button type="submit" name="input" class="btn btn-primary">Submit</button>
                     </form>
@@ -207,140 +229,10 @@ $data4 = mysqli_query($koneksi, "SELECT * from h_news");
         </div>
 
 
+
 </main>
 
-<!-- JQUERY AJAX -->
 
-<script>
-    $(function() {
-
-        // FOR SECTION 2 ========================================================================
-
-        $('.inputService').on('click', function() {
-            $('#modalLabel').html('ADD SERVICE');
-            $('.modal-body form button').attr('name', 'input');
-            $('.forImg p').attr('hidden', true);
-
-            // resetting from ubaService
-            $('#id_serv').val('');
-            $('#title').val('');
-            $('#description').val('');
-            $('#currImg').val('');
-            $('#forImg img').attr('src', '');
-            $('#cat_serv').val('home');
-        });
-
-        $('.ubahService').on('click', function() {
-            $('#modalLabel').html('EDIT SERVICE');
-            $('.forImg p').removeAttr('hidden');
-            $('.modal-body form button').attr('name', 'ubah');
-
-            const id = $(this).data('id');
-
-            $.ajax({
-                url: 'proses/h_service.php',
-                data: {
-                    id: id
-                },
-                method: 'post',
-                dataType: 'json',
-                success: function(data) {
-                    $('#id_serv').val(data.id);
-                    $('#title').val(data.title);
-                    $('#description').val(data.description);
-                    $('#currImg').val(data.img);
-                    $('#forImg img').attr('src', '../assets/uploaded/' + data.img);
-                    $('#cat_serv').val(data.category);
-                }
-            });
-        });
-
-        // FOR SECTION 3 ==================================================================
-
-        // $('.inputSection').on('click', function() {
-        //     $('#modalLabel').html('ADD SECTION');
-        //     $('.modal-body form button').attr('name', 'input');
-        //     $('.forImg p').attr('hidden', true);
-        //     $('.modal-body form').attr('action', 'proses/h_section.php');
-        //     $('form .forImg').attr('hidden', true);
-
-        //     // resetting from ubaService
-        //     $('#id_serv').val('');
-        //     $('#title').val('');
-        //     $('#description').val('');
-        //     $('#currImg').val('');
-        //     $('#forImg img').attr('src', '');
-        //     $('#cat_serv').val('home');
-        // });
-
-        // $('.ubahSection').on('click', function() {
-        //     $('#modalLabel').html('EDIT SECTION');
-        //     $('.modal-body form button').attr('name', 'ubah');
-        //     $('.forImg p').attr('hidden', true);
-        //     $('.modal-body form').attr('action', 'proses/h_section.php');
-        //     $('form .forImg').attr('hidden', true);
-
-        //     const id = $(this).data('id');
-
-        //     $.ajax({
-        //         url: 'proses/h_section.php',
-        //         data: {
-        //             id: id
-        //         },
-        //         method: 'post',
-        //         dataType: 'json',
-        //         success: function(data) {
-        //             $('#id_serv').val(data.id);
-        //             $('#title').val(data.title);
-        //             $('#description').val(data.description);
-        //             $('#cat_serv').val(data.category);
-        //         }
-        //     });
-        // });
-
-        // FOR SECTION 4 ==================================================================
-
-        $('.inputNews').on('click', function() {
-            $('#modalLabel').html('ADD NEWS');
-            $('.modal-body form button').attr('name', 'input');
-            $('.modal-body form').attr('action', 'proses/h_news.php');
-
-            // resetting from ubaService
-            $('#id_serv').val('');
-            $('#title').val('');
-            $('#description').val('');
-            $('#currImg').val('');
-            $('#forImg img').attr('src', '');
-            $('#cat_serv').val('home');
-        });
-
-        $('.ubahNews').on('click', function() {
-            $('#modalLabel').html('EDIT NEWS');
-            $('.modal-body form button').attr('name', 'ubah');
-            $('.modal-body form').attr('action', 'proses/h_news.php');
-            $('.forImg p').removeAttr('hidden');
-
-            const id = $(this).data('id');
-
-            $.ajax({
-                url: 'proses/h_news.php',
-                data: {
-                    id: id
-                },
-                method: 'post',
-                dataType: 'json',
-                success: function(data) {
-                    $('#id_serv').val(data.id);
-                    $('#title').val(data.title);
-                    $('#description').val(data.description);
-                    $('#currImg').val(data.img);
-                    $('#forImg img').attr('src', '../assets/uploaded/' + data.img);
-                }
-            });
-        });
-
-    });
-</script>
 
 
 <?php include("inc_footer.php") ?>

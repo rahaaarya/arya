@@ -145,11 +145,16 @@ h2{
     margin-top: 28px;
     transition: all .2s ease-in;
 }
-.circle-icon:hover{
+.card-body:hover .circle-icon{
     width: 60px;
     height: 60px;
     background-color: #fff;
     border-radius: 50%;
+}
+.card-body:hover h4{
+    color: #fff;
+    /* font-size: 24px; */
+    transition: all .2s ease-in;
 }
 .card-layanan:hover h3{
     color: #fff;
@@ -213,7 +218,7 @@ h2{
 }
 .card-body:hover h5{
     color: #fff;
-    font-size: 24px;
+    /* font-size: 24px; */
     transition: all .2s ease-in;
 }
 .card-body:hover p{
@@ -221,6 +226,12 @@ h2{
     font-size:14px;
     transition: all .2s ease-in;
 }
+
+.card-body:hover .fa {
+    color: white;
+    transition: all .2s ease-in;
+} 
+
 #values{
     margin: auto;
 }

@@ -106,6 +106,65 @@
 
     </footer>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<!-- jika ada session sukses maka tampilkan sweet alert dengan pesan yang telah di set
+    di dalam session sukses dah failed  -->
+<?php if (@$_SESSION['sukses']) { ?>
+    <script>
+        swal("Success", "<?php echo $_SESSION['sukses']; ?>", "success");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses']);
+} elseif (@$_SESSION['gagal']) { ?>
+    <script>
+        swal("Failed", "<?php echo $_SESSION['gagal']; ?>", "warning");
+    </script>
+<?php unset($_SESSION['gagal']);
+} ?>
+
+
+<!-- // for navbar scroll -->
+<script>
+    const header = document.querySelector('#scHeader');
+    const sectionHero = document.querySelector('#hero');
+    const heroOptions = {
+        rootMargin: "-100px 0px 0px 0px"
+    };
+
+    const heroObserver = new IntersectionObserver(function(entries, heroObserver) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                header.classList.add('bg-dark');
+            } else {
+                header.classList.remove('bg-dark');
+            }
+        });
+    }, heroOptions);
+
+    if (!sectionHero) {
+        header.classList.add('bg-dark');
+    } else {
+        heroObserver.observe(sectionHero);
+    }
+
+
+    // for active link
+
+    const pageURL = window.location.href;
+    const lastURL = pageURL.substr(pageURL.lastIndexOf('/') + 1);
+    const scNav = document.querySelectorAll('#scNav');
+
+    if (lastURL == '' || lastURL == 'index.php') {
+        scNav[0].classList.add('active');
+    } else if (lastURL == 'about.php') {
+        scNav[1].classList.add('active');
+    } else if (lastURL == 'product.php' || lastURL == 'business.php') {
+        scNav[2].classList.add('active');
+    } else if (lastURL == 'contact.php') {
+        scNav[3].classList.add('active');
+    }
 </script>
 </body>

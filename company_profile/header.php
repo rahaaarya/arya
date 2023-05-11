@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Signika:wght@500&display=swap" rel="stylesheet" />
     <!-- my style -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style1.css" />
     <!-- Icon -->
     <script src="https://kit.fontawesome.com/cfb1150b77.js" crossorigin="anonymous"></script>
 </head>
@@ -19,10 +19,10 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-fixed w-100">
+    <nav id="scHeader" class="navbar navbar-expand-lg navbar-dark position-fixed w-100">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <nav class="navbar-dark  bg-transparent">
+                <nav class="navbar-dark">
                     <div class="container-fluid">
                         <a class="navbar-brand " href="#">
                             <img src="assets/img/logo title.png" alt="Logo" width="80" class="d-inline-block align-text-top me-8">STMIK Indonesia
@@ -35,39 +35,26 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="index.php">HOME</a>
+                            <a id="scNav" class="nav-link" aria-current="page" href="index.php">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">ABOUT US</a>
+                            <a id="scNav" class="nav-link" href="about.php">ABOUT US</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="product.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">PRODUCT &
+                            <a id="scNav" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">PRODUCT &
                                 SERVICE</a>
                             <ul class="dropdown-menu">
                                 <li><a href="product.php" class="dropdown-item">E-Government &raquo;</a>
-                                    <ul class="dropdown-menu submenu">
-                                        <li><a href="" class="dropdown-item">E-Performance</a></li>
-                                        <li><a href="" class="dropdown-item">E-Simpeg</a></li>
-                                        <li><a href="" class="dropdown-item">E-Nangkis</a></li>
-                                        <li><a href="" class="dropdown-item">E-Pangan</a></li>
-                                        <li><a href="" class="dropdown-item">E-Regulasi Tenaga Kesehatan</a></li>
-                                        <li><a href="" class="dropdown-item">E-Tata Ruang</a></li>
-                                    </ul>
                                 </li>
                                 <li><a href="business.php" class="dropdown-item">E-Business &raquo;</a>
-                                    <ul class="dropdown-menu submenu">
-                                        <li><a href="" class="dropdown-item">E-Office</a></li>
-                                    </ul>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.php">CONTACT US</a>
+                            <a id="scNav" class="nav-link" href="contact.php">CONTACT US</a>
                         </li>
                     </ul>
                     </ul>
-
-
                 </div>
         </div>
     </nav>

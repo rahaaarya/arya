@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     $judul = $_POST['judul'];
     $deskripsi = $_POST['deskripsi'];
     $kategori = $_POST['kategori'];
+    $page = $_POST['page'];
 
     $query = "UPDATE h_hero SET id = '$id',title = '$judul', description = '$deskripsi',category = '$kategori' WHERE id = '$id'";
 
@@ -17,12 +18,12 @@ if (isset($_POST['submit'])) {
     $sql = mysqli_query($koneksi, $query) or die("Query Error :" . mysqli_error($koneksi));
     if ($sql) {
         $_SESSION["sukses"] = 'Data Berhasil Disimpan';
-        header("location:../home.php?p=section1");
+        header("location:../" . $kategori . ".php" . $page);
     } else {
         $_SESSION["gagal"] = 'Data Gagal Disimpan';
-        header("location:../home.php?p=section1");
+        header("location:../" . $kategori . ".php" . $page);
     }
 } else {
     $_SESSION["gagal"] = 'Data Gagal Disimpan';
-    header("location:../home.php?p=section1");
+    header("location:../" . $kategori . ".php" . $page);
 }

@@ -14,7 +14,6 @@ $data3 = mysqli_fetch_array($data3);
 // $data4 = mysqli_fetch_array($data4);
 
 
-
 ?>
 
 <!-- Hero Section -->
@@ -49,13 +48,15 @@ $data3 = mysqli_fetch_array($data3);
         </div>
         <div class="row mt-5 d-flex justify-content-around">
             <?php while ($service = mysqli_fetch_array($data2)) { ?>
-                <div class="col-md-3 mb-5 text-center">
-                    <div class="card-layanan h-100">
-                        <div class="circle-icon position-relative mx-auto">
-                            <img src="assets/uploaded/<?= $service['img'] ?>" alt="" class="icon position-absolute top=-50 start-50 translate-middle">
+                <div class="col-md-3 text-center">
+                    <div class="card-icon">
+                        <div class="card-body h-100">
+                            <div class="circle-icon position-relative mt-2 mb-3 mx-auto">
+                                <i class="fas fa-<?= $service['icon'] ?> fa-2x icon icon position-absolute top=-50 start-50 translate-middle "></i>
+                            </div>
+                            <h4 class="mt-4"><?= $service['title'] ?></h4>
+                            <p class="mt-3"><?= $service['description'] ?></p>
                         </div>
-                        <h3 class="mt-4"><?= $service['title'] ?></h3>
-                        <p class="mt-3"><?= $service['description'] ?></p>
                     </div>
                 </div>
             <?php } ?>
@@ -88,10 +89,10 @@ $data3 = mysqli_fetch_array($data3);
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <?php while ($news = mysqli_fetch_array($data4)) { ?>
-                <div class="col-12 text-center">
+                <div class="col-12 text-center mb-5">
                     <div class="card-img h-100">
                         <img src="assets/uploaded/<?= $news['img']; ?>" class="" alt="...">
-                        <div class="card-body">
+                        <div class="card-body h-50">
                             <h5 class="card-title"><?= $news['title']; ?></h5>
                             <p class="card-text"> <?= $news['description']; ?></p>
                         </div>
@@ -101,4 +102,5 @@ $data3 = mysqli_fetch_array($data3);
         </div>
     </div>
 </section>
-<?php include 'footer.php'; ?>
+<?php
+include 'footer.php'; ?>

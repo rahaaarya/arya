@@ -21,7 +21,7 @@ $page = post_value('page');
 // NGAMBIL DATA UNTUK DIKEMBALIKAN KE DALAM AJAX PADA FILE inc_footer.php
 if (isset($id)) {
 
-    $query = "SELECT * FROM h_service WHERE id = '$id'";
+    $query = "SELECT * FROM ps_application WHERE id = '$id'";
 
     $sql = mysqli_query($koneksi, $query);
     $result = mysqli_fetch_array($sql);
@@ -32,7 +32,7 @@ if (isset($id)) {
 
 if (isset($_POST['input'])) {
 
-    $query = "INSERT INTO h_service VALUES ('','$judul','$deskripsi','$icon','$kategori')";
+    $query = "INSERT INTO ps_application VALUES ('','$icon','$judul','$deskripsi','$kategori')";
 
     // validasi dan check eror
     $sql = mysqli_query($koneksi, $query) or die("Query Error :" . mysqli_error($koneksi));
@@ -49,7 +49,7 @@ if (isset($_POST['input'])) {
 
 if (isset($_POST['ubah'])) {
 
-    $query = "UPDATE h_service SET id = '$id',title = '$judul', description = '$deskripsi',icon = '$icon', category = '$kategori' WHERE id = '$id'";
+    $query = "UPDATE ps_application SET id = '$id', icon = '$icon', title = '$judul', description = '$deskripsi', category = '$kategori' WHERE id = '$id'";
 
     // validasi dan check eror
     $sql = mysqli_query($koneksi, $query) or die("Query Error :" . mysqli_error($koneksi));
@@ -69,7 +69,7 @@ if (isset($_GET['id'])) {
     $halaman = $_GET['h'];
     $page = $_GET['p'];
 
-    $query = "DELETE FROM h_service WHERE id = '$ambil_id'";
+    $query = "DELETE FROM ps_application WHERE id = '$ambil_id'";
 
     // validasi dan check eror
     $sql = mysqli_query($koneksi, $query) or die("Query Error :" . mysqli_error($koneksi));
